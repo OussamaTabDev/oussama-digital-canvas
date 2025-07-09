@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oussama - Développeur Web & IA</title>
-    <meta name="description" content="Portfolio d'Oussama - Développeur Web & IA passionné, spécialisé en Python, JavaScript, Django et technologies modernes">
+    <title>Oussama - Web Developer & AI Specialist</title>
+    <meta name="description" content="Portfolio of Oussama - Web Developer & AI Specialist, specialized in Python, JavaScript, Django and modern technologies">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,26 @@
         <div class="nav-container">
             <a href="#home" class="nav-logo">Oussama</a>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Accueil</a></li>
-                <li><a href="#about" class="nav-link">À propos</a></li>
-                <li><a href="#projects" class="nav-link">Projets</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#about" class="nav-link" data-en="About" data-ar="نبذة">About</a></li>
+                <li><a href="#projects" class="nav-link" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-ar="تواصل">Contact</a></li>
                 <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Changer le thème">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Change theme">
                         <i class="fas fa-moon"></i>
                     </button>
+                </li>
+                <li>
+                    <div class="language-selector">
+                        <button class="lang-toggle" id="lang-toggle">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-lang">EN</span>
+                        </button>
+                        <div class="lang-dropdown" id="lang-dropdown">
+                            <button data-lang="en" class="lang-option active">English</button>
+                            <button data-lang="ar" class="lang-option">العربية</button>
+                        </div>
+                    </div>
                 </li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -46,24 +58,24 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Salut, je suis <span class="highlight">Oussama</span>
+                    <span data-en="Hi, I'm" data-ar="مرحباً، أنا">Hi, I'm</span> <span class="highlight">Oussama</span>
                 </h1>
                 <div class="hero-subtitle">
                     <span class="typewriter" id="typewriter"></span>
                     <span class="cursor">|</span>
                 </div>
-                <p class="hero-description">
-                    Développeur web et IA passionné, je crée des solutions innovantes 
-                    en combinant technologies modernes et intelligence artificielle.
+                <p class="hero-description" data-en="Passionate web developer and AI specialist, I create innovative solutions by combining modern technologies and artificial intelligence." data-ar="مطور ويب ومتخصص في الذكاء الاصطناعي شغوف، أقوم بإنشاء حلول مبتكرة من خلال دمج التقنيات الحديثة والذكاء الاصطناعي.">
+                    Passionate web developer and AI specialist, I create innovative solutions 
+                    by combining modern technologies and artificial intelligence.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-envelope"></i>
-                        Me contacter
+                        <span data-en="Contact Me" data-ar="تواصل معي">Contact Me</span>
                     </a>
                     <a href="cv.pdf" target="_blank" class="btn btn-secondary">
                         <i class="fas fa-download"></i>
-                        Télécharger CV
+                        <span data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</span>
                     </a>
                 </div>
                 <div class="social-links">
@@ -82,19 +94,19 @@
                 <div class="floating-card">
                     <div class="card-content">
                         <i class="fas fa-code"></i>
-                        <span>Clean Code</span>
+                        <span data-en="Clean Code" data-ar="كود نظيف">Clean Code</span>
                     </div>
                 </div>
                 <div class="floating-card" style="animation-delay: 0.5s;">
                     <div class="card-content">
                         <i class="fas fa-brain"></i>
-                        <span>IA & ML</span>
+                        <span data-en="AI & ML" data-ar="ذكاء اصطناعي">AI & ML</span>
                     </div>
                 </div>
                 <div class="floating-card" style="animation-delay: 1s;">
                     <div class="card-content">
                         <i class="fas fa-mobile-alt"></i>
-                        <span>Responsive</span>
+                        <span data-en="Responsive" data-ar="متجاوب">Responsive</span>
                     </div>
                 </div>
             </div>
@@ -109,59 +121,135 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
+            <h2 class="section-title" data-en="About Me" data-ar="نبذة عني">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p class="about-intro">
-                        Passionné par le développement web et l'intelligence artificielle, 
-                        je transforme les idées en solutions numériques innovantes.
+                    <p class="about-intro" data-en="Passionate about web development and artificial intelligence, I transform ideas into innovative digital solutions with a strong focus on user experience and cutting-edge technology." data-ar="شغوف بتطوير الويب والذكاء الاصطناعي، أحول الأفكار إلى حلول رقمية مبتكرة مع التركيز بقوة على تجربة المستخدم والتكنولوجيا المتطورة.">
+                        Passionate about web development and artificial intelligence, 
+                        I transform ideas into innovative digital solutions with a strong focus on user experience and cutting-edge technology.
                     </p>
+                    
+                    <div class="bio-section">
+                        <h3 data-en="Professional Background" data-ar="الخلفية المهنية">Professional Background</h3>
+                        <p data-en="With expertise spanning from frontend development to AI implementation, I specialize in creating scalable web applications and intelligent systems. My journey includes hands-on experience with modern frameworks, database management, and machine learning algorithms." data-ar="مع خبرة تمتد من تطوير الواجهات الأمامية إلى تنفيذ الذكاء الاصطناعي، أتخصص في إنشاء تطبيقات ويب قابلة للتوسع وأنظمة ذكية. تشمل رحلتي خبرة عملية مع الأطر الحديثة وإدارة قواعد البيانات وخوارزميات التعلم الآلي.">
+                            With expertise spanning from frontend development to AI implementation, I specialize in creating scalable web applications and intelligent systems. My journey includes hands-on experience with modern frameworks, database management, and machine learning algorithms.
+                        </p>
+                    </div>
+
                     <div class="education">
-                        <h3>Formation</h3>
+                        <h3 data-en="Education" data-ar="التعليم">Education</h3>
                         <div class="education-item">
                             <div class="education-header">
-                                <h4>Licence SMI</h4>
+                                <h4 data-en="Bachelor's in Mathematical & Computer Sciences" data-ar="بكالوريوس في العلوم الرياضية والحاسوبية">Bachelor's in Mathematical & Computer Sciences</h4>
                                 <span class="year">2025</span>
                             </div>
-                            <p>Université Moulay Ismail, Meknès</p>
+                            <p data-en="Moulay Ismail University, Meknes" data-ar="جامعة مولاي إسماعيل، مكناس">Moulay Ismail University, Meknes</p>
                         </div>
                         <div class="education-item">
                             <div class="education-header">
-                                <h4>Bac Sciences Mathématiques</h4>
+                                <h4 data-en="High School Diploma in Mathematical Sciences" data-ar="بكالوريا العلوم الرياضية">High School Diploma in Mathematical Sciences</h4>
                                 <span class="year">2021</span>
                             </div>
-                            <p>Khénifra - Mention Passable</p>
+                            <p data-en="Khenifra - Pass Grade" data-ar="خنيفرة - ذكر مقبول">Khenifra - Pass Grade</p>
+                        </div>
+                    </div>
+
+                    <div class="languages-section">
+                        <h3 data-en="Languages" data-ar="اللغات">Languages</h3>
+                        <div class="languages-grid">
+                            <div class="language-item">
+                                <span class="language-name" data-en="Arabic" data-ar="العربية">Arabic</span>
+                                <div class="language-level">
+                                    <div class="level-bar">
+                                        <div class="level-fill" style="width: 100%"></div>
+                                    </div>
+                                    <span data-en="Native" data-ar="أصلي">Native</span>
+                                </div>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name" data-en="French" data-ar="الفرنسية">French</span>
+                                <div class="language-level">
+                                    <div class="level-bar">
+                                        <div class="level-fill" style="width: 90%"></div>
+                                    </div>
+                                    <span data-en="Fluent" data-ar="بطلاقة">Fluent</span>
+                                </div>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-name" data-en="English" data-ar="الإنجليزية">English</span>
+                                <div class="language-level">
+                                    <div class="level-bar">
+                                        <div class="level-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span data-en="Advanced" data-ar="متقدم">Advanced</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="skills-container">
-                    <h3>Compétences Techniques</h3>
+                    <h3 data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</h3>
                     <div class="skills-grid">
                         <div class="skill-category">
-                            <h4>Frontend</h4>
+                            <h4 data-en="Frontend Development" data-ar="تطوير الواجهات الأمامية">Frontend Development</h4>
                             <div class="skills">
                                 <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
                                 <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
                                 <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
-                                <span class="skill-badge"><i class="fas fa-wind"></i> Tailwind</span>
+                                <span class="skill-badge"><i class="fab fa-react"></i> React</span>
+                                <span class="skill-badge"><i class="fab fa-vue"></i> Vue.js</span>
+                                <span class="skill-badge"><i class="fas fa-wind"></i> Tailwind CSS</span>
+                                <span class="skill-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                                <span class="skill-badge"><i class="fab fa-sass"></i> SASS/SCSS</span>
                             </div>
                         </div>
+                        
                         <div class="skill-category">
-                            <h4>Backend</h4>
+                            <h4 data-en="Backend Development" data-ar="تطوير الخلفية">Backend Development</h4>
                             <div class="skills">
                                 <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
-                                <span class="skill-badge"><i class="fas fa-flask"></i> Flask</span>
                                 <span class="skill-badge"><i class="fab fa-django"></i> Django</span>
+                                <span class="skill-badge"><i class="fas fa-flask"></i> Flask</span>
+                                <span class="skill-badge"><i class="fab fa-node-js"></i> Node.js</span>
                                 <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
+                                <span class="skill-badge"><i class="fas fa-server"></i> Express.js</span>
+                                <span class="skill-badge"><i class="fas fa-fire"></i> FastAPI</span>
                             </div>
                         </div>
+
                         <div class="skill-category">
-                            <h4>Outils & DB</h4>
+                            <h4 data-en="AI & Machine Learning" data-ar="الذكاء الاصطناعي والتعلم الآلي">AI & Machine Learning</h4>
                             <div class="skills">
+                                <span class="skill-badge"><i class="fas fa-brain"></i> TensorFlow</span>
+                                <span class="skill-badge"><i class="fas fa-robot"></i> PyTorch</span>
+                                <span class="skill-badge"><i class="fas fa-chart-line"></i> Scikit-learn</span>
+                                <span class="skill-badge"><i class="fas fa-eye"></i> OpenCV</span>
+                                <span class="skill-badge"><i class="fas fa-language"></i> NLP</span>
+                                <span class="skill-badge"><i class="fas fa-network-wired"></i> Neural Networks</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4 data-en="Database & Tools" data-ar="قواعد البيانات والأدوات">Database & Tools</h4>
+                            <div class="skills">
+                                <span class="skill-badge"><i class="fas fa-database"></i> MySQL</span>
+                                <span class="skill-badge"><i class="fas fa-leaf"></i> MongoDB</span>
+                                <span class="skill-badge"><i class="fas fa-elephant"></i> PostgreSQL</span>
                                 <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
-                                <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
+                                <span class="skill-badge"><i class="fab fa-docker"></i> Docker</span>
+                                <span class="skill-badge"><i class="fas fa-cloud"></i> AWS</span>
+                                <span class="skill-badge"><i class="fab fa-linux"></i> Linux</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h4 data-en="Mobile Development" data-ar="تطوير التطبيقات المحمولة">Mobile Development</h4>
+                            <div class="skills">
                                 <span class="skill-badge"><i class="fab fa-flutter"></i> Flutter</span>
-                                <span class="skill-badge"><i class="fas fa-brain"></i> IA/ML</span>
+                                <span class="skill-badge"><i class="fab fa-react"></i> React Native</span>
+                                <span class="skill-badge"><i class="fab fa-android"></i> Android</span>
+                                <span class="skill-badge"><i class="fas fa-mobile-alt"></i> Progressive Web Apps</span>
                             </div>
                         </div>
                     </div>
@@ -173,24 +261,26 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Mes Projets</h2>
+            <h2 class="section-title" data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                <a href="#" class="project-link" aria-label="View project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" aria-label="Code source">
+                                <a href="#" class="project-link" aria-label="Source code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>E-commerce Platform</h3>
-                        <p>Application e-commerce complète développée en PHP Vanilla lors de mon stage chez GenerationNT. Interface moderne avec gestion des produits, panier et paiement.</p>
+                        <h3 data-en="E-commerce Platform" data-ar="منصة التجارة الإلكترونية">E-commerce Platform</h3>
+                        <p data-en="Complete e-commerce application developed in PHP Vanilla during my internship at GenerationNT. Modern interface with product management, cart and payment system." data-ar="تطبيق تجارة إلكترونية كامل تم تطويره بـ PHP خلال تدريبي في GenerationNT. واجهة حديثة مع إدارة المنتجات وسلة التسوق ونظام الدفع.">
+                            Complete e-commerce application developed in PHP Vanilla during my internship at GenerationNT. Modern interface with product management, cart and payment system.
+                        </p>
                         <div class="project-tech">
                             <span class="tech-tag">PHP</span>
                             <span class="tech-tag">MySQL</span>
@@ -203,18 +293,20 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                <a href="#" class="project-link" aria-label="View project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" aria-label="Code source">
+                                <a href="#" class="project-link" aria-label="Source code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>Bibliothèque Manager</h3>
-                        <p>Application de gestion de bibliothèque avec Django et Tailwind CSS. Système complet de gestion des livres, emprunts et utilisateurs avec interface responsive.</p>
+                        <h3 data-en="Library Manager" data-ar="مدير المكتبة">Library Manager</h3>
+                        <p data-en="Library management application with Django and Tailwind CSS. Complete system for managing books, loans and users with responsive interface." data-ar="تطبيق إدارة المكتبة مع Django و Tailwind CSS. نظام كامل لإدارة الكتب والإعارة والمستخدمين مع واجهة متجاوبة.">
+                            Library management application with Django and Tailwind CSS. Complete system for managing books, loans and users with responsive interface.
+                        </p>
                         <div class="project-tech">
                             <span class="tech-tag">Django</span>
                             <span class="tech-tag">Tailwind</span>
@@ -227,21 +319,23 @@
                     <div class="project-image">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                <a href="#" class="project-link" aria-label="View project">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                                <a href="#" class="project-link" aria-label="Code source">
+                                <a href="#" class="project-link" aria-label="Source code">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3>FocusAI Tracker</h3>
-                        <p>Application de productivité intelligente utilisant l'IA pour analyser les habitudes de travail. Interface intuitive avec recommandations personnalisées basées sur ML.</p>
+                        <h3 data-en="FocusAI Tracker" data-ar="متتبع التركيز بالذكاء الاصطناعي">FocusAI Tracker</h3>
+                        <p data-en="Intelligent productivity application using AI to analyze work habits. Intuitive interface with personalized recommendations based on ML." data-ar="تطبيق إنتاجية ذكي يستخدم الذكاء الاصطناعي لتحليل عادات العمل. واجهة بديهية مع توصيات شخصية مبنية على التعلم الآلي.">
+                            Intelligent productivity application using AI to analyze work habits. Intuitive interface with personalized recommendations based on ML.
+                        </p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">IA/ML</span>
+                            <span class="tech-tag">AI/ML</span>
                             <span class="tech-tag">Flask</span>
                         </div>
                     </div>
@@ -250,7 +344,7 @@
             <div class="projects-footer">
                 <a href="https://github.com" target="_blank" class="btn btn-outline">
                     <i class="fab fa-github"></i>
-                    Voir plus sur GitHub
+                    <span data-en="View more on GitHub" data-ar="عرض المزيد على GitHub">View more on GitHub</span>
                 </a>
             </div>
         </div>
@@ -259,11 +353,13 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
+            <h2 class="section-title" data-en="Contact Me" data-ar="تواصل معي">Contact Me</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Disponible pour stage ou mission freelance</h3>
-                    <p>Vous avez un projet en tête ? N'hésitez pas à me contacter pour discuter de vos besoins. Je suis toujours ouvert aux nouvelles opportunités et collaborations.</p>
+                    <h3 data-en="Available for internship or freelance mission" data-ar="متاح للتدريب أو المهام المستقلة">Available for internship or freelance mission</h3>
+                    <p data-en="Have a project in mind? Don't hesitate to contact me to discuss your needs. I'm always open to new opportunities and collaborations." data-ar="لديك مشروع في ذهنك؟ لا تتردد في التواصل معي لمناقشة احتياجاتك. أنا دائماً منفتح للفرص الجديدة والتعاون.">
+                        Have a project in mind? Don't hesitate to contact me to discuss your needs. I'm always open to new opportunities and collaborations.
+                    </p>
                     <div class="contact-methods">
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
@@ -271,17 +367,17 @@
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Meknès, Maroc</span>
+                            <span data-en="Meknes, Morocco" data-ar="مكناس، المغرب">Meknes, Morocco</span>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-clock"></i>
-                            <span>Disponible du Lun-Ven</span>
+                            <span data-en="Available Mon-Fri" data-ar="متاح الإثنين-الجمعة">Available Mon-Fri</span>
                         </div>
                     </div>
                 </div>
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <label for="name">Nom complet</label>
+                        <label for="name" data-en="Full Name" data-ar="الاسم الكامل">Full Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
@@ -289,12 +385,12 @@
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message" data-en="Message" data-ar="الرسالة">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i>
-                        Envoyer le message
+                        <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
                     </button>
                 </form>
             </div>
@@ -305,12 +401,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Oussama. Tous droits réservés.</p>
+                <p data-en="© 2024 Oussama. All rights reserved." data-ar="© 2024 أسامة. جميع الحقوق محفوظة.">&copy; 2024 Oussama. All rights reserved.</p>
                 <div class="footer-links">
-                    <a href="#home">Accueil</a>
-                    <a href="#about">À propos</a>
-                    <a href="#projects">Projets</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="#about" data-en="About" data-ar="نبذة">About</a>
+                    <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+                    <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
                 </div>
             </div>
         </div>

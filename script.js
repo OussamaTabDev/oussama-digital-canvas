@@ -1,12 +1,21 @@
 
-// Configuration de l'animation typewriter
-const texts = [
-    "Développeur Web & IA passionné.",
-    "Créateur de solutions innovantes.",
-    "Spécialiste Python & JavaScript.",
-    "Passionné par l'Intelligence Artificielle."
-];
+// Configuration de l'animation typewriter avec support multilingue
+const texts = {
+    en: [
+        "Web Developer & AI Specialist.",
+        "Creator of innovative solutions.",
+        "Python & JavaScript Expert.",
+        "Passionate about Artificial Intelligence."
+    ],
+    ar: [
+        "مطور ويب ومتخصص في الذكاء الاصطناعي.",
+        "مبدع حلول مبتكرة.",
+        "خبير في Python و JavaScript.",
+        "شغوف بالذكاء الاصطناعي."
+    ]
+};
 
+let currentLanguage = 'en';
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -15,7 +24,8 @@ let typeSpeed = 100;
 // Animation typewriter
 function typeWriter() {
     const typewriterElement = document.getElementById('typewriter');
-    const currentText = texts[textIndex];
+    const currentTexts = texts[currentLanguage];
+    const currentText = currentTexts[textIndex];
     
     if (isDeleting) {
         typewriterElement.textContent = currentText.substring(0, charIndex - 1);
@@ -28,15 +38,108 @@ function typeWriter() {
     }
     
     if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; // Pause avant de commencer à effacer
+        typeSpeed = 2000;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        typeSpeed = 500; // Pause avant de taper le nouveau texte
+        textIndex = (textIndex + 1) % currentTexts.length;
+        typeSpeed = 500;
     }
     
     setTimeout(typeWriter, typeSpeed);
+}
+
+// Gestion des langues
+function initLanguageToggle() {
+    const langToggle = document.getElementById('lang-toggle');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const langOptions = document.querySelectorAll('.lang-option');
+    const currentLangSpan = document.getElementById('current-lang');
+    
+    // Toggle dropdown
+    langToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+            langDropdown.classList.remove('active');
+        }
+    });
+    
+    // Handle language selection
+    langOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const selectedLang = option.dataset.lang;
+            if (selectedLang !== currentLanguage) {
+                switchLanguage(selectedLang);
+                
+                // Update active state
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // Update current language display
+                currentLangSpan.textContent = selectedLang.toUpperCase();
+                
+                // Close dropdown
+                langDropdown.classList.remove('active');
+            }
+        });
+    });
+}
+
+// Fonction pour changer de langue
+function switchLanguage(lang) {
+    currentLanguage = lang;
+    const html = document.documentElement;
+    
+    // Update HTML lang and dir attributes
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    
+    // Update all elements with language data attributes
+    const elements = document.querySelectorAll('[data-en][data-ar]');
+    elements.forEach(element => {
+        element.classList.add('loading');
+        
+        setTimeout(() => {
+            if (lang === 'en') {
+                element.textContent = element.getAttribute('data-en');
+            } else if (lang === 'ar') {
+                element.textContent = element.getAttribute('data-ar');
+            }
+            element.classList.remove('loading');
+        }, 150);
+    });
+    
+    // Restart typewriter animation with new language
+    textIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+    
+    // Save language preference
+    localStorage.setItem('preferred-language', lang);
+    
+    console.log(`🌐 Language switched to: ${lang}`);
+}
+
+// Load saved language preference
+function loadLanguagePreference() {
+    const savedLang = localStorage.getItem('preferred-language');
+    if (savedLang && (savedLang === 'en' || savedLang === 'ar')) {
+        // Update the active option
+        const activeOption = document.querySelector(`[data-lang="${savedLang}"]`);
+        if (activeOption) {
+            document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+            activeOption.classList.add('active');
+            document.getElementById('current-lang').textContent = savedLang.toUpperCase();
+        }
+        
+        // Switch to saved language
+        switchLanguage(savedLang);
+    }
 }
 
 // Navigation mobile
@@ -141,19 +244,30 @@ function initContactForm() {
         const formData = new FormData(contactForm);
         const formObject = Object.fromEntries(formData);
         
-        // Simulation d'envoi (à remplacer par votre logique d'envoi)
+        // Messages multilingues
+        const messages = {
+            en: {
+                success: 'Message sent successfully! I will reply to you quickly.',
+                error: 'Error sending message. Please try again.'
+            },
+            ar: {
+                success: 'تم إرسال الرسالة بنجاح! سأرد عليك قريباً.',
+                error: 'خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.'
+            }
+        };
+        
         try {
             // Simuler un délai d'envoi
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             // Afficher un message de succès
-            showNotification('Message envoyé avec succès ! Je vous répondrai rapidement.', 'success');
+            showNotification(messages[currentLanguage].success, 'success');
             
             // Réinitialiser le formulaire
             contactForm.reset();
             
         } catch (error) {
-            showNotification('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+            showNotification(messages[currentLanguage].error, 'error');
         }
     });
 }
@@ -169,17 +283,18 @@ function showNotification(message, type = 'info') {
     notification.style.cssText = `
         position: fixed;
         top: 100px;
-        right: 20px;
+        ${currentLanguage === 'ar' ? 'left: 20px;' : 'right: 20px;'}
         background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#6366f1'};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         z-index: 1001;
-        transform: translateX(100%);
+        transform: translateX(${currentLanguage === 'ar' ? '-100%' : '100%'});
         transition: transform 0.3s ease;
         max-width: 300px;
         font-weight: 500;
+        direction: ${currentLanguage === 'ar' ? 'rtl' : 'ltr'};
     `;
     
     document.body.appendChild(notification);
@@ -191,9 +306,11 @@ function showNotification(message, type = 'info') {
     
     // Supprimer après 5 secondes
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
+        notification.style.transform = `translateX(${currentLanguage === 'ar' ? '-100%' : '100%'})`;
         setTimeout(() => {
-            document.body.removeChild(notification);
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
         }, 300);
     }, 5000);
 }
@@ -217,13 +334,14 @@ function initSmoothScroll() {
 
 // Ajout des classes fade-in aux éléments
 function addFadeInClasses() {
-    // Sélectionner les éléments à animer
     const elementsToAnimate = [
         '.about-content',
         '.project-card',
         '.contact-content',
         '.skill-category',
-        '.education-item'
+        '.education-item',
+        '.bio-section',
+        '.languages-section'
     ];
     
     elementsToAnimate.forEach(selector => {
@@ -247,12 +365,40 @@ function initParallaxEffect() {
     });
 }
 
+// Animation des barres de niveau de langue
+function animateLanguageBars() {
+    const languageItems = document.querySelectorAll('.language-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const levelFill = entry.target.querySelector('.level-fill');
+                if (levelFill) {
+                    const width = levelFill.style.width;
+                    levelFill.style.width = '0%';
+                    setTimeout(() => {
+                        levelFill.style.width = width;
+                    }, 200);
+                }
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    languageItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
+    // Charger les préférences de langue
+    loadLanguagePreference();
+    
     // Démarrer l'animation typewriter
     typeWriter();
     
     // Initialiser toutes les fonctionnalités
+    initLanguageToggle();
     initMobileNavigation();
     initThemeToggle();
     initScrollEffects();
@@ -260,11 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     addFadeInClasses();
     initParallaxEffect();
+    animateLanguageBars();
     
     // Animation initiale des éléments visibles
     setTimeout(animateOnScroll, 100);
     
-    console.log('🚀 Portfolio Oussama - Tous les systèmes sont opérationnels !');
+    console.log('🚀 Portfolio Oussama - All systems operational! 🌟');
 });
 
 // Gestion du redimensionnement de la fenêtre
@@ -272,11 +419,15 @@ window.addEventListener('resize', () => {
     // Fermer le menu mobile si ouvert lors du redimensionnement
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const langDropdown = document.getElementById('lang-dropdown');
     
     if (window.innerWidth > 768) {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
     }
+    
+    // Fermer le dropdown de langue
+    langDropdown.classList.remove('active');
 });
 
 // Easter egg - Konami Code
@@ -295,7 +446,12 @@ document.addEventListener('keydown', (e) => {
     }
     
     if (konamiCode.join(',') === konamiSequence.join(',')) {
-        showNotification('🎉 Konami Code activé ! Vous êtes un vrai geek !', 'success');
+        const easterEggMessages = {
+            en: '🎉 Konami Code activated! You are a true geek!',
+            ar: '🎉 تم تفعيل كود كونامي! أنت مبرمج حقيقي!'
+        };
+        
+        showNotification(easterEggMessages[currentLanguage], 'success');
         
         // Petit effet visuel amusant
         document.body.style.animation = 'rainbow 2s ease-in-out';
