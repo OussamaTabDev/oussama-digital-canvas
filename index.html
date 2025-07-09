@@ -1,24 +1,321 @@
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>oussama-digital-canvas</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oussama - Développeur Web & IA</title>
+    <meta name="description" content="Portfolio d'Oussama - Développeur Web & IA passionné, spécialisé en Python, JavaScript, Django et technologies modernes">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">Oussama</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+                <li><a href="#projects" class="nav-link">Projets</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Changer le thème">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <meta property="og:title" content="oussama-digital-canvas" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Salut, je suis <span class="highlight">Oussama</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Développeur web et IA passionné, je crée des solutions innovantes 
+                    en combinant technologies modernes et intelligence artificielle.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Me contacter
+                    </a>
+                    <a href="cv.pdf" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Télécharger CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:contact@oussama.dev" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <div class="card-content">
+                        <i class="fas fa-code"></i>
+                        <span>Clean Code</span>
+                    </div>
+                </div>
+                <div class="floating-card" style="animation-delay: 0.5s;">
+                    <div class="card-content">
+                        <i class="fas fa-brain"></i>
+                        <span>IA & ML</span>
+                    </div>
+                </div>
+                <div class="floating-card" style="animation-delay: 1s;">
+                    <div class="card-content">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        Passionné par le développement web et l'intelligence artificielle, 
+                        je transforme les idées en solutions numériques innovantes.
+                    </p>
+                    <div class="education">
+                        <h3>Formation</h3>
+                        <div class="education-item">
+                            <div class="education-header">
+                                <h4>Licence SMI</h4>
+                                <span class="year">2025</span>
+                            </div>
+                            <p>Université Moulay Ismail, Meknès</p>
+                        </div>
+                        <div class="education-item">
+                            <div class="education-header">
+                                <h4>Bac Sciences Mathématiques</h4>
+                                <span class="year">2021</span>
+                            </div>
+                            <p>Khénifra - Mention Passable</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="skills-container">
+                    <h3>Compétences Techniques</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <div class="skills">
+                                <span class="skill-badge"><i class="fab fa-html5"></i> HTML5</span>
+                                <span class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                                <span class="skill-badge"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="skill-badge"><i class="fas fa-wind"></i> Tailwind</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Backend</h4>
+                            <div class="skills">
+                                <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
+                                <span class="skill-badge"><i class="fas fa-flask"></i> Flask</span>
+                                <span class="skill-badge"><i class="fab fa-django"></i> Django</span>
+                                <span class="skill-badge"><i class="fab fa-php"></i> PHP</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Outils & DB</h4>
+                            <div class="skills">
+                                <span class="skill-badge"><i class="fab fa-git-alt"></i> Git</span>
+                                <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
+                                <span class="skill-badge"><i class="fab fa-flutter"></i> Flutter</span>
+                                <span class="skill-badge"><i class="fas fa-brain"></i> IA/ML</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" aria-label="Code source">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-commerce Platform</h3>
+                        <p>Application e-commerce complète développée en PHP Vanilla lors de mon stage chez GenerationNT. Interface moderne avec gestion des produits, panier et paiement.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" aria-label="Code source">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Bibliothèque Manager</h3>
+                        <p>Application de gestion de bibliothèque avec Django et Tailwind CSS. Système complet de gestion des livres, emprunts et utilisateurs avec interface responsive.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link" aria-label="Voir le projet">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link" aria-label="Code source">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>FocusAI Tracker</h3>
+                        <p>Application de productivité intelligente utilisant l'IA pour analyser les habitudes de travail. Interface intuitive avec recommandations personnalisées basées sur ML.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">IA/ML</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-footer">
+                <a href="https://github.com" target="_blank" class="btn btn-outline">
+                    <i class="fab fa-github"></i>
+                    Voir plus sur GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-moi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Disponible pour stage ou mission freelance</h3>
+                    <p>Vous avez un projet en tête ? N'hésitez pas à me contacter pour discuter de vos besoins. Je suis toujours ouvert aux nouvelles opportunités et collaborations.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@oussama.dev</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Meknès, Maroc</span>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <span>Disponible du Lun-Ven</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Envoyer le message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Oussama. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="#home">Accueil</a>
+                    <a href="#about">À propos</a>
+                    <a href="#projects">Projets</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
