@@ -438,6 +438,9 @@ const konamiSequence = [
     'KeyB', 'KeyA'
 ];
 
+// Load the audio (ensure the file path is correct)
+const konamiSound = new Audio('konami.mp3'); // Replace with your actual sound file
+
 document.addEventListener('keydown', (e) => {
     konamiCode.push(e.code);
     
@@ -452,7 +455,8 @@ document.addEventListener('keydown', (e) => {
         };
         
         showNotification(easterEggMessages[currentLanguage], 'success');
-        
+        // Play the Konami sound
+        konamiSound.play().catch(err => console.error('Sound error:', err));
         // Petit effet visuel amusant
         document.body.style.animation = 'rainbow 2s ease-in-out';
         setTimeout(() => {
